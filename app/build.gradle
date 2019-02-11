@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "ru.trubin23.tasksmvi_rxjava"
+        applicationId "ru.trubin23.room_migration"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1

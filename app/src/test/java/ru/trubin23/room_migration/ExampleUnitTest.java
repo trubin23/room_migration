@@ -1,4 +1,4 @@
-package ru.trubin23.tasksmvi_rxjava;
+package ru.trubin23.room_migration;
 
 import org.junit.Test;
 
