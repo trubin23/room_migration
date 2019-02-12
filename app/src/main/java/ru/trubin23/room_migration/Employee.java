@@ -13,5 +13,7 @@ public class Employee {
 
     public int salary;
 
-    public long birthday;
+    public int birthday;
+
+    public int age;
 }
