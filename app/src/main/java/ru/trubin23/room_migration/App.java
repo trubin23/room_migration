@@ -3,6 +3,8 @@ package ru.trubin23.room_migration;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
+import static ru.trubin23.room_migration.AppDatabase.MIGRATION_1_2;
+
 public class App extends Application {
 
     private static App INSTANCE;
@@ -14,7 +16,7 @@ public class App extends Application {
         super.onCreate();
         INSTANCE = this;
         mDatabase = Room.databaseBuilder(this, AppDatabase.class, "database")
-                .allowMainThreadQueries()
+                .addMigrations(MIGRATION_1_2)
                 .fallbackToDestructiveMigration()
                 .build();
     }
