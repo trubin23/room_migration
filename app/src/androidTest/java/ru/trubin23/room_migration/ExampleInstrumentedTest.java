@@ -57,11 +57,8 @@ public class ExampleInstrumentedTest {
         assertEquals(1, mEmployeeDao.getAll().size());
     }
 
-    @Test
-    public void whenInsertEmployeeListThenReadTheSameOne() {
+    private List<Employee> createEmployeeList(int listSize) {
         List<Employee> employeeList = new ArrayList<>();
-
-        int listSize = 10;
 
         for (int i = 0; i < listSize; i++) {
             Employee employee = new Employee();
@@ -74,9 +71,28 @@ public class ExampleInstrumentedTest {
             employeeList.add(employee);
         }
 
+        return employeeList;
+    }
+
+    @Test
+    public void whenInsertEmployeeListThenReadTheSameOne() {
+        int listSize = 10;
+        List<Employee> employeeList = createEmployeeList(listSize);
+
         mEmployeeDao.insertAll(employeeList);
 
         assertEquals(listSize, mEmployeeDao.getAll().size());
+    }
+
+    @Test
+    public void whenDeleteAllThenReadTheSameOne() {
+        int listSize = 10;
+        List<Employee> employeeList = createEmployeeList(listSize);
+
+        mEmployeeDao.insertAll(employeeList);
+        mEmployeeDao.deleteAll();
+
+        assertEquals(0, mEmployeeDao.getAll().size());
     }
 
     @After
