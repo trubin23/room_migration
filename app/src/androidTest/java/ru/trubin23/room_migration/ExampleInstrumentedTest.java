@@ -11,10 +11,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -45,7 +44,7 @@ public class ExampleInstrumentedTest {
     }
 
     @Test
-    public void whenInsertEmployeeThenReadTheSameOne(){
+    public void whenInsertEmployeeThenReadTheSameOne() {
         Employee employee = new Employee();
         employee.id = 1;
         employee.name = "";
@@ -56,6 +55,28 @@ public class ExampleInstrumentedTest {
         mEmployeeDao.insert(employee);
 
         assertEquals(1, mEmployeeDao.getAll().size());
+    }
+
+    @Test
+    public void whenInsertEmployeeListThenReadTheSameOne() {
+        List<Employee> employeeList = new ArrayList<>();
+
+        int listSize = 10;
+
+        for (int i = 0; i < listSize; i++) {
+            Employee employee = new Employee();
+            employee.id = i;
+            employee.name = "";
+            employee.salary = 10000;
+            employee.birthday = 1980;
+            employee.age = 25;
+
+            employeeList.add(employee);
+        }
+
+        mEmployeeDao.insertAll(employeeList);
+
+        assertEquals(listSize, mEmployeeDao.getAll().size());
     }
 
     @After
