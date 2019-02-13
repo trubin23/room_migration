@@ -30,5 +30,5 @@ public interface EmployeeDao {
     void delete(Employee employee);
 
     @Query("DELETE FROM employee")
-    void deleteAll(Employee employee);
+    void deleteAll();
 }
